@@ -197,7 +197,7 @@ jobs:
           path: installer/dist
 
       - name: Create the release
-        if: github.repository == 'o9ll/nun'
+        if: github.repository == 'o9ll/installer'
         run: |
           gh release upload installer --clobber dist/*
         env:

@@ -5,7 +5,7 @@ Nun is a modified version of [Vencord](https://vencord.dev/) which is capable of
 
 ## Installation
 
-You can download the installer for your respective platform in the [Installer Release](https://github.com/o9ll/nun/releases/tag/installer). The installer is currently a lightly modified version of the Vencord installer, which will install Nun despite looking the same. You can also [build from source](#building-from-source).
+You can download the installer for your respective platform in the [Installer Release](https://github.com/o9ll/installer/releases/tag/installer). The installer is currently a lightly modified version of the Vencord installer, which will install Nun despite looking the same. You can also [build from source](#building-from-source).
 
 ## Usage
 

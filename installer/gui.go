@@ -439,7 +439,7 @@ func renderInstaller() g.Widget {
 		g.Style().SetFontSize(20).To(
 			renderErrorCard(
 				DiscordYellow,
-				"Despite looking like the normal Vencord installer this installs Nun instead. See https://github.com/o9ll/nun for more info.",
+				"Despite looking like the normal Vencord installer this installs Nun instead. See https://github.com/o9ll/installer for more info.",
 				90,
 			),
 		),
