@@ -44,7 +44,7 @@ jobs:
         run: go get -v
 
       - name: Build Cli
-        run: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -tags "static cli" -ldflags "-s -w -X 'equilotl/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'equilotl/buildinfo.InstallerTag=${{ github.ref_name }}'" -o EquilotlCli-linux
+        run: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -tags "static cli" -ldflags "-s -w -X 'vencordinstaller/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'vencordinstaller/buildinfo.InstallerTag=${{ github.ref_name }}'" -o NunInstallerCli-linux
 
       - name: Update executable
         run: |
@@ -53,7 +53,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: NunInstaller-linux
+          name: VencordInstaller-linux
           path: |
             installer/NunInstallerCli-linux
 
@@ -91,25 +91,25 @@ jobs:
         run: go get -v
 
       - name: Build
-        run: CGO_ENABLED=1 GOOS=darwin GOARCH=amd64 go build -v -tags static -ldflags "-s -w -X 'equilotl/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'equilotl/buildinfo.InstallerTag=${{ github.ref_name }}'" -o Installer
+        run: CGO_ENABLED=1 GOOS=darwin GOARCH=amd64 go build -v -tags static -ldflags "-s -w -X 'vencordinstaller/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'vencordinstaller/buildinfo.InstallerTag=${{ github.ref_name }}'" -o VencordInstaller
 
       - name: Update executable
         run: |
-          chmod +x Installer
+          chmod +x VencordInstaller
 
       - name: Generate MacOS bundle
         run: |
-          mkdir -p Installer.app/Contents/MacOS
-          mkdir -p Installer.app/Contents/Resources
-          cp macos/Info.plist Installer.app/Contents/Info.plist
-          mv NunInstaller Installer.app/Contents/MacOS/Installer
-          cp macos/icon.icns Installer.app/Contents/Resources/icon.icns
-          zip -r NunInstaller.MacOS.zip Installer.app
+          mkdir -p VencordInstaller.app/Contents/MacOS
+          mkdir -p VencordInstaller.app/Contents/Resources
+          cp macos/Info.plist VencordInstaller.app/Contents/Info.plist
+          mv VencordInstaller VencordInstaller.app/Contents/MacOS/VencordInstaller
+          cp macos/icon.icns VencordInstaller.app/Contents/Resources/icon.icns
+          zip -r NunInstaller.MacOS.zip VencordInstaller.app
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: NunInstaller-macos
+          name: VencordInstaller-macos
           path: installer/NunInstaller.MacOS.zip
 
 
@@ -158,19 +158,19 @@ jobs:
           export GOROOT=/mingw64/lib/go
           export GOPATH=/mingw64
           go-winres make --product-version "git-tag"
-          CGO_ENABLED=1 GOOS=windows GOARCH=amd64 go build -v -tags static -ldflags "-s -w -H=windowsgui -extldflags=-static -X 'equilotl/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'equilotl/buildinfo.InstallerTag=${{ github.ref_name }}'" -o NunInstaller.exe
+          CGO_ENABLED=1 GOOS=windows GOARCH=amd64 go build -v -tags static -ldflags "-s -w -H=windowsgui -extldflags=-static -X 'vencordinstaller/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'vencordinstaller/buildinfo.InstallerTag=${{ github.ref_name }}'" -o NunInstaller.exe
 
       - name: Build i386 Cli
         shell: msys2 {0}
         run: |
           export GOROOT=/mingw64/lib/go
           export GOPATH=/mingw64
-          CGO_ENABLED=0 GOOS=windows GOARCH=386 go build -v -tags "static cli" -ldflags "-s -w -extldflags=-static -X 'equilotl/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'equilotl/buildinfo.InstallerTag=${{ github.ref_name }}'" -o NunInstallerCli.exe
+          CGO_ENABLED=0 GOOS=windows GOARCH=386 go build -v -tags "static cli" -ldflags "-s -w -extldflags=-static -X 'vencordinstaller/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'vencordinstaller/buildinfo.InstallerTag=${{ github.ref_name }}'" -o NunInstallerCli.exe
 
       - name: Upload artifact
         uses: actions/upload-artifact@v6
         with:
-          name: NunInstaller-windows
+          name: VencordInstaller-windows
           path: |
             installer/NunInstaller.exe
             installer/NunInstallerCli.exe
@@ -186,17 +186,17 @@ jobs:
 
       - uses: actions/download-artifact@v4
         with:
-          name: NunInstaller-linux
+          name: VencordInstaller-linux
           path: installer/dist
 
       - uses: actions/download-artifact@v4
         with:
-          name: NunInstaller-macos
+          name: VencordInstaller-macos
           path: installer/dist
 
       - uses: actions/download-artifact@v4
         with:
-          name: NunInstaller-windows
+          name: VencordInstaller-windows
           path: installer/dist
 
       - name: Create the release
