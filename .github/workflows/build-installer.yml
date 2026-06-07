@@ -15,6 +15,9 @@ defaults:
   run:
     working-directory: installer
 
+permissions:
+  contents: write
+
 jobs:
   build-linux:
     runs-on: ubuntu-22.04 # hopefully older glibc for better compatibility on systems like debian bullseye
