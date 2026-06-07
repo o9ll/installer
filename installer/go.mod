@@ -1,4 +1,4 @@
-module installer
+module vencordinstaller
 
 go 1.20
 

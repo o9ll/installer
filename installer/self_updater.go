@@ -15,7 +15,7 @@ import (
 	"path"
 	"runtime"
 	"time"
-	"nuninstaller/buildinfo"
+	"vencordinstaller/buildinfo"
 )
 
 var IsSelfOutdated = false
@@ -46,15 +46,15 @@ func init() {
 }
 
 func GetInstallerDownloadLink() string {
-	const BaseUrl = "https://github.com/o9ll/installer/releases/latest/download/"
+	const BaseUrl = "https://github.com/Vencord/Installer/releases/latest/download/"
 	switch runtime.GOOS {
 	case "windows":
-		filename := Ternary(buildinfo.UiType == buildinfo.UiTypeCli, "NunInstallerCli.exe", "NunInstaller.exe")
+		filename := Ternary(buildinfo.UiType == buildinfo.UiTypeCli, "VencordInstallerCli.exe", "VencordInstaller.exe")
 		return BaseUrl + filename
 	case "darwin":
-		return BaseUrl + "NunInstaller.MacOS.zip"
+		return BaseUrl + "VencordInstaller.MacOS.zip"
 	case "linux":
-		return BaseUrl + "NunInstallerCli-linux"
+		return BaseUrl + "VencordInstallerCli-linux"
 	default:
 		return ""
 	}
@@ -90,7 +90,7 @@ func UpdateSelf() error {
 	}
 	defer res.Body.Close()
 
-	tmp, err := os.CreateTemp(ownExeDir, "InstallerUpdate")
+	tmp, err := os.CreateTemp(ownExeDir, "VencordInstallerUpdate")
 	if err != nil {
 		return fmt.Errorf("Failed to create tempfile: %w", err)
 	}

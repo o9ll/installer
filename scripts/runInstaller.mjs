@@ -25,8 +25,8 @@ import { Readable } from "stream";
 import { finished } from "stream/promises";
 import { fileURLToPath } from "url";
 
-const BASE_URL = "https://github.com/o9ll/installer/releases/latest/download/";
-const INSTALLER_PATH_DARWIN = "Installer.app/Contents/MacOS/Installer";
+const BASE_URL = "https://github.com/Vencord/Installer/releases/latest/download/";
+const INSTALLER_PATH_DARWIN = "VencordInstaller.app/Contents/MacOS/VencordInstaller";
 
 const BASE_DIR = join(dirname(fileURLToPath(import.meta.url)), "..");
 const FILE_DIR = join(BASE_DIR, "dist", "Installer");
@@ -35,11 +35,11 @@ const ETAG_FILE = join(FILE_DIR, "etag.txt");
 function getFilename() {
     switch (process.platform) {
         case "win32":
-            return "NunInstallerCli.exe";
+            return "VencordInstallerCli.exe";
         case "darwin":
-            return "NunInstaller.MacOS.zip";
+            return "VencordInstaller.MacOS.zip";
         case "linux":
-            return "NunInstallerCli-linux";
+            return "VencordInstallerCli-linux";
         default:
             throw new Error("Unsupported platform: " + process.platform);
     }
@@ -53,7 +53,7 @@ async function ensureBinary() {
 
     const downloadName = join(FILE_DIR, filename);
     const outputFile = process.platform === "darwin"
-        ? join(FILE_DIR, "Installer")
+        ? join(FILE_DIR, "VencordInstaller")
         : downloadName;
 
     const etag = existsSync(outputFile) && existsSync(ETAG_FILE)

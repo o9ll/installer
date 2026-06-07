@@ -16,7 +16,7 @@ import (
 	"github.com/AllenDang/imgui-go"
 	"image"
 	"image/color"
-	"nuninstaller/buildinfo"
+	"vencordinstaller/buildinfo"
 	// png decoder for icon
 	_ "image/png"
 	"os"

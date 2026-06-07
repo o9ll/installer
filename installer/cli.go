@@ -17,7 +17,7 @@ import (
 	"os"
 	"runtime"
 	"strings"
-	"nuninstaller/buildinfo"
+	"vencordinstaller/buildinfo"
 )
 
 var discords []any

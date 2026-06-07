@@ -8,13 +8,13 @@ package main
 
 import (
 	"image/color"
-	"nuninstaller/buildinfo"
+	"vencordinstaller/buildinfo"
 )
 
 const ReleaseUrl = "https://api.github.com/repos/o9ll/installer/releases/latest"
 const InstallerReleaseUrl = "https://api.github.com/repos/o9ll/installer/releases/latest"
 
-var UserAgent = "Installer/" + buildinfo.InstallerGitHash + " (https://github.com/o9ll/installer)"
+var UserAgent = "NunInstaller/" + buildinfo.InstallerGitHash + " (https://github.com/o9ll/installer)"
 
 var (
 	DiscordGreen  = color.RGBA{R: 0x2D, G: 0x7C, B: 0x46, A: 0xFF}
