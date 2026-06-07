@@ -196,7 +196,14 @@ jobs:
           name: VencordInstaller-windows
           path: installer/dist
 
-      - name: Create the release
+      - name: Create or get release
+        if: github.repository == 'o9ll/installer'
+        run: |
+          gh release create installer || true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload artifacts to release
         if: github.repository == 'o9ll/installer'
         run: |
           gh release upload installer --clobber dist/*
