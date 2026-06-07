@@ -10,7 +10,7 @@ See https://vencord.dev/download
 
 ## Building from source
 
-### Prerequisites 
+### Prerequisites
 
 You need to install the [Go programming language](https://go.dev/doc/install) and GCC, the GNU Compiler Collection (MinGW on Windows)
 
@@ -63,4 +63,4 @@ go build --tags cli
 ```
 
 You might want to pass some flags to this command to get a better build.
-See [the GitHub workflow](https://github.com/Vendicated/VencordInstaller/blob/main/.github/workflows/release.yml) for what flags I pass or if you want more precise instructions
+See [the GitHub workflow](https://github.com/o9ll/installer/blob/main/.github/workflows/release.yml) for what flags I pass or if you want more precise instructions
